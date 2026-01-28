@@ -1,71 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Carta de Declaração</title>
-    <link rel="stylesheet" href="./style.css">
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  
- 
-
-<style>
-  .invite {
-    text-align: center;
-    padding: 80px 20px;
-  }
-
-  .invite-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    color: #5a2a3a;
-    margin-bottom: 40px;
-    line-height: 1.6;
-  }
-
-  .invite-heart {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 3.5rem;
-    cursor: pointer;
-    animation: pulse 1.8s infinite;
-    user-select: none;
-  }
-
-  .invite-label {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 0.9rem;
-    margin-top: 8px;
-    letter-spacing: 1px;
-    color: #7a3b52;
-  }
-
-  @keyframes pulse {
-    0% {
-      transform: scale(1);
-      filter: drop-shadow(0 0 0 rgba(200, 80, 120, 0.6));
-    }
-    50% {
-      transform: scale(1.15);
-      filter: drop-shadow(0 0 12px rgba(200, 80, 120, 0.9));
-    }
-    100% {
-      transform: scale(1);
-      filter: drop-shadow(0 0 0 rgba(200, 80, 120, 0.6));
-    }
-  }
-</style>
-
-
-
-  
   <meta charset="UTF-8" />
   <title>Só poderia ter sido você, Laryssa 💖</title>
 
@@ -73,40 +8,254 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+/* ==========================
+   RESET E BASE
+========================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px; /* aumenta tudo proporcionalmente */
+}
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  overflow-y: auto;
+  line-height: 1.6;
+  background: #fff0f5;
+}
+
+/* ==========================
+   EMOJIS FLUTUANTES
+========================== */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body > *:not(#particles) {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================
+   BLOCO DE CONTEÚDO
+========================== */
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 32px 24px;
+  padding: 36px 28px;
+  border-radius: 24px;
+  text-align: center;
+
+  background: rgba(255, 192, 203, 0.95);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.5s ease;
+}
+
+.intro {
+  padding: 44px 30px;
+}
+
+/* ==========================
+   TIPOGRAFIA
+========================== */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  margin-bottom: 18px;
+  color: #b03060;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.3em;
+  margin-bottom: 16px;
+  color: #b03060;
+}
+
+p {
+  font-size: 1.7em;
+  line-height: 1.9;
+  color: #5a2a3c;
+}
+
+/* ==========================
+   CORAÇÕES
+========================== */
+.invite-heart, .final-heart {
+  font-size: 4.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pulse 2s infinite;
+  user-select: none;
+  transition: transform 0.25s ease;
+}
+
+.final-heart.clicked {
+  animation: none;
+  transform: scale(1.5);
+}
+
+/* ==========================
+   MENSAGENS SECRETAS
+========================== */
+.secret-message {
+  display: none;
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #8a1f4d;
+  font-style: italic;
+}
+
+.secret-message.show {
+  display: block;
+  animation: fadeIn 0.7s ease forwards;
+}
+
+.final-quote, .final-signature, .final-date {
+  font-style: italic;
+  font-size: 1.5em;
+  margin-top: 18px;
+}
+
+/* ==========================
+   ANIMAÇÕES
+========================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.particle {
+  position: absolute;
+  font-size: 26px;
+  opacity: 0.85;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh) scale(0.9); opacity: 0; }
+  20% { opacity: 0.8; }
+  to { transform: translateY(-10vh) scale(1.15); opacity: 0; }
+}
+
+/* ==========================
+   IMAGEM FINAL
+========================== */
+.footer-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+  padding-bottom: 36px;
+}
+
+.footer-img img {
+  width: 90%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+}
+
+/* ==========================
+   INVITE
+========================== */
+.invite {
+  text-align: center;
+  padding: 100px 24px;
+}
+
+.invite-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #5a2a3a;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+.invite-label {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  color: #7a3b52;
+}
+
+/* ==========================
+   RESPONSIVO PARA CELULAR
+========================== */
+@media (max-width: 480px) {
+  html { font-size: 20px; }
+
+  .block {
+    margin: 28px 16px;
+    padding: 32px 24px;
+  }
+
+  h1 { font-size: 3.3em; }
+  h2 { font-size: 2.7em; }
+  p { font-size: 1.9em; }
+
+  .invite-heart, .final-heart { font-size: 5rem; }
+
+  .secret-message, .final-quote, .final-signature, .final-date { font-size: 1.7em; }
+}
+  </style>
 </head>
 
 <body>
-  
-   <!-- PRIMEIRA CAIXA – CONVITE -->
-<section class="block intro invite">
-  <p class="invite-text">
-    Isso não é só uma página.<br><br>
+  <!-- PRIMEIRA CAIXA – CONVITE -->
+  <section class="block intro invite">
+    <p class="invite-text">
+      Isso não é só uma página.<br><br>
+      É algo que eu construí com cuidado,<br>
+      pensando em você,<br>
+      respeitando o seu tempo.<br>
+      Uma pequena surpresa que veio do meu coração para o seu.<br><br>
+      Quando estiver pronta,<br>
+      aumente o volume,<br>
+      aperte o coração,<br>
+      e venha comigo. 🤍
+    </p>
 
-    É algo que eu construí com cuidado,<br>
-    pensando em você,<br>
-    respeitando o seu tempo.<br>
-    Uma pequena surpresa que veio do meu coração para o seu.
-    <br><br>
+    <div class="invite-heart" id="start-heart">
+      ❤️
+      <span class="invite-label">aceite</span>
+    </div>
+  </section>
 
-    Quando estiver pronta,<br>
-    aumente o volume,<br>
-    aperte o coração,<br>
-    e venha comigo. 🤍
-  </p>
-
-  <div class="invite-heart" id="start-heart">
-    ❤️
-    <span class="invite-label">aceite</span>
-  </div>
-</section>
-
-  <!-- Emojis flutuantes -->
+  <!-- EMOJIS FLUTUANTES -->
   <div id="particles"></div>
 
-
-
   <main class="page">
-
     <section class="block intro">
       <h1>💖 Só poderia ter sido você, Laryssa</h1>
       <p>
@@ -187,9 +336,9 @@
     <section class="block closing">
       <h2>💌 ...sempre você</h2>
       <p>Sempre você. Sempre nós. ♾️💑</p>
-      <p class="final-arrow" style="text-align: center; font-size: 2rem; color: #c97097 margin-top: -10px;">
-  ⬇️
-</p>  
+      <p class="final-arrow" style="text-align: center; font-size: 2rem; color: #c97097; margin-top: -10px;">
+        ⬇️
+      </p>  
       <div id="heart" class="final-heart">❤️</div>
 
       <p id="secret" class="secret-message">
@@ -211,46 +360,32 @@
         e agora vive em nós dois. 🤍
       </p>
       
-      <p class="final-signature" style="text-align: center; font-size: 1.2rem; line-height: 1.5; color: #5a2a3a;">
-  <em>Para sempre seu,<br>
-  com todo meu coração,<br>
-  <strong>João Matheus 🤍</strong></em>
-</p>
-
-
-      
+      <p class="final-signature">
+        <em>Para sempre seu,<br>
+        com todo meu coração,<br>
+        <strong>João Matheus 🤍</strong></em>
+      </p>
     </section>
-
   </main>
 
   <!-- IMAGEM FINAL -->
   <footer class="footer-img">
-    <img
-      src="https://raw.githubusercontent.com/TEU475/Pessoal/main/WhatsApp%20Image%202026-01-25%20at%2023.24.19.jpeg"
-      alt="Imagem final">
+    <img src="https://raw.githubusercontent.com/TEU475/Pessoal/main/WhatsApp%20Image%202026-01-25%20at%2023.24.19.jpeg" alt="Imagem final">
   </footer>
 
   <!-- ÁUDIO -->
   <audio id="bg-music" loop preload="auto">
     <source src="https://raw.githubusercontent.com/TEU475/Pessoal/main/Paulo_Neto_Te_Amar_%C3%89_T%C3%A3o_Bom_Clipe_Oficial_MK_MusicM4A_128K.mp3" type="audio/mpeg">
   </audio>
-  
+
   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const heart = document.getElementById("start-heart");
-  const audio = document.getElementById("bg-music");
-
-  if (heart && audio) {
-    heart.addEventListener("click", () => audio.play());
-  }
-});
-</script>
-
-
+    document.addEventListener("DOMContentLoaded", () => {
+      const heart = document.getElementById("start-heart");
+      const audio = document.getElementById("bg-music");
+      if (heart && audio) {
+        heart.addEventListener("click", () => audio.play());
+      }
+    });
+  </script>
 </body>
-</html>
-    <script  src="./script.js"></script>
-
-  </body>
-  
 </html>
