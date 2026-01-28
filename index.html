@@ -13,27 +13,27 @@
 /* ==========================
    RESET E BASE
 ========================== */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  font-size: 25px; /* aumenta tudo proporcionalmente */
-}
+html { font-size: 20px; height: 100%; }
 
 body {
-  margin: 0;
   font-family: 'Quicksand', sans-serif;
-  overflow-y: auto;
+  overflow-x: hidden;
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   background: linear-gradient(
-    to bottom,
-    rgb(255,192,203),  /* rosa clarinho */
-    rgb(255,182,193),
-    rgb(219,112,147),
-    rgb(179,48,96)     /* rosa escuro */
+    180deg,
+    rgb(179,48,96) 0%,      /* rosa escuro topo */
+    rgb(255,182,193) 50%,    /* rosa claro meio */
+    rgb(179,48,96) 100%      /* rosa escuro fundo */
   );
-
+  background-size: cover;
+}
 
 /* ==========================
    EMOJIS FLUTUANTES
@@ -42,49 +42,13 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 1;
 }
-    
-    <div id="particles"></div>
 
-<script>
-window.onload = () => {
-  const particleContainer = document.getElementById("particles");
-  const emojis = ["❤️","🤍","🌸","🌷","✨","💖","💗","💌"];
-
-  function createParticle(x, y) {
-    const span = document.createElement("span");
-    span.classList.add("particle");
-    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    span.style.left = (x || Math.random() * window.innerWidth) + "px";
-    span.style.top = (y || window.innerHeight) + "px";
-    span.style.fontSize = (20 + Math.random() * 20) + "px";
-    span.style.opacity = 0.7 + Math.random() * 0.3;
-    const duration = 5 + Math.random() * 5;
-    span.style.animationDuration = duration + "s";
-    particleContainer.appendChild(span);
-    setTimeout(() => span.remove(), duration * 1000);
-  }
-
-  setInterval(() => createParticle(), 500);
-
-  document.body.addEventListener("click", (e) => createParticle(e.clientX, e.clientY));
-  document.body.addEventListener("touchstart", (e) => {
-    const touch = e.touches[0];
-    createParticle(touch.clientX, touch.clientY);
-  });
-};
-</script>
-
-
-body > *:not(#particles) {
-  position: relative;
-  z-index: 2;
-}
-
+body > *:not(#particles) { position: relative; z-index: 2; }
 
 /* ==========================
    BLOCO DE CONTEÚDO
@@ -92,6 +56,7 @@ body > *:not(#particles) {
 .page {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .block {
@@ -99,49 +64,29 @@ body > *:not(#particles) {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  margin: 32px 24px;
-  padding: 36px 28px;
-  border-radius: 24px;
+  margin: 64px 48px;
+  padding: 64px 48px;
+  border-radius: 32px;
   text-align: center;
-
   background: rgba(255, 192, 203, 0.95);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.5s ease;
 }
 
-.intro {
-  padding: 44px 30px;
-}
+.intro { padding: 64px 48px; }
 
 /* ==========================
    TIPOGRAFIA
 ========================== */
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3em;
-  margin-bottom: 18px;
-  color: #b03060;
-}
-
-h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.3em;
-  margin-bottom: 16px;
-  color: #b03060;
-}
-
-p {
-  font-size: 1.7em;
-  line-height: 1.9;
-  color: #5a2a3c;
-}
+h1 { font-family: 'Playfair Display', serif; font-size: 4em; margin-bottom: 24px; color: #b03060; }
+h2 { font-family: 'Playfair Display', serif; font-size: 3em; margin-bottom: 20px; color: #b03060; }
+p { font-size: 2em; line-height: 2.2; color: #5a2a3c; }
 
 /* ==========================
    CORAÇÕES
 ========================== */
 .invite-heart, .final-heart {
-  font-size: 4.5rem;
+  font-size: 6rem;
   cursor: pointer;
   display: inline-flex;
   flex-direction: column;
@@ -151,59 +96,37 @@ p {
   transition: transform 0.25s ease;
 }
 
-.final-heart.clicked {
-  animation: none;
-  transform: scale(1.5);
-}
+.final-heart.clicked { animation: none; transform: scale(1.5); }
 
 /* ==========================
    MENSAGENS SECRETAS
 ========================== */
 .secret-message {
   display: none;
-  margin-top: 20px;
-  font-size: 1.5em;
+  margin-top: 32px;
+  font-size: 2em;
   color: #8a1f4d;
   font-style: italic;
 }
 
-.secret-message.show {
-  display: block;
-  animation: fadeIn 0.7s ease forwards;
-}
+.secret-message.show { display: block; animation: fadeIn 0.7s ease forwards; }
 
-.final-quote, .final-signature, .final-date {
-  font-style: italic;
-  font-size: 1.5em;
-  margin-top: 18px;
-}
+.final-quote, .final-signature, .final-date { font-style: italic; font-size: 2em; margin-top: 24px; }
 
 /* ==========================
    ANIMAÇÕES
 ========================== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
 
 .particle {
   position: absolute;
-  font-size: 26px;
+  font-size: 40px;
   opacity: 0.85;
   animation: floatUp linear infinite;
 }
 
-@keyframes floatUp {
-  from { transform: translateY(100vh) scale(0.9); opacity: 0; }
-  20% { opacity: 0.8; }
-  to { transform: translateY(-10vh) scale(1.15); opacity: 0; }
-}
+@keyframes floatUp { from { transform: translateY(100vh) scale(0.9); opacity: 0; } 20% { opacity: 0.8; } to { transform: translateY(-10vh) scale(1.3); opacity: 0; } }
 
 /* ==========================
    IMAGEM FINAL
@@ -212,60 +135,54 @@ p {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 56px;
-  padding-bottom: 36px;
+  margin-top: 64px;
+  padding-bottom: 48px;
 }
 
 .footer-img img {
   width: 90%;
-  max-width: 480px;
+  max-width: 600px;
   height: auto;
-  border-radius: 18px;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  border-radius: 24px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 /* ==========================
    INVITE
 ========================== */
-.invite {
-  text-align: center;
-  padding: 100px 24px;
-}
+.invite { text-align: center; padding: 120px 48px; }
 
 .invite-text {
   font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #5a2a3a;
-  margin-bottom: 48px;
-  line-height: 1.7;
+  margin-bottom: 64px;
+  line-height: 2;
 }
 
-.invite-label {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 1.1rem;
-  margin-top: 10px;
-  letter-spacing: 1px;
-  color: #7a3b52;
-}
+.invite-label { font-family: 'Quicksand', sans-serif; font-size: 1.3rem; margin-top: 12px; letter-spacing: 1px; color: #7a3b52; }
 
 /* ==========================
-   RESPONSIVO PARA CELULAR
+   RESPONSIVO
 ========================== */
-@media (max-width: 480px) {
-  html { font-size: 20px; }
-
-  .block {
-    margin: 28px 16px;
-    padding: 32px 24px;
-  }
-
-  h1 { font-size: 3.3em; }
-  h2 { font-size: 2.7em; }
-  p { font-size: 1.9em; }
-
+@media (max-width: 768px) {
+  html { font-size: 18px; }
+  .block { margin: 48px 32px; padding: 48px 32px; }
+  h1 { font-size: 3.5em; }
+  h2 { font-size: 2.5em; }
+  p { font-size: 1.8em; }
   .invite-heart, .final-heart { font-size: 5rem; }
+  .secret-message, .final-quote, .final-signature, .final-date { font-size: 1.8em; }
+}
 
-  .secret-message, .final-quote, .final-signature, .final-date { font-size: 1.7em; }
+@media (max-width: 480px) {
+  html { font-size: 16px; }
+  .block { margin: 32px 16px; padding: 32px 24px; }
+  h1 { font-size: 3em; }
+  h2 { font-size: 2em; }
+  p { font-size: 1.6em; }
+  .invite-heart, .final-heart { font-size: 4rem; }
+  .secret-message, .final-quote, .final-signature, .final-date { font-size: 1.6em; }
 }
   </style>
 </head>
@@ -375,7 +292,7 @@ p {
     <section class="block closing">
       <h2>💌 ...sempre você</h2>
       <p>Sempre você. Sempre nós. ♾️💑</p>
-      <p class="final-arrow" style="text-align: center; font-size: 2rem; color: #c97097; margin-top: -10px;">
+      <p class="final-arrow" style="text-align: center; font-size: 2.5rem; color: #c97097; margin-top: -10px;">
         ⬇️
       </p>  
       <div id="heart" class="final-heart">❤️</div>
@@ -417,13 +334,46 @@ p {
     <source src="https://raw.githubusercontent.com/TEU475/Pessoal/main/Paulo_Neto_Te_Amar_%C3%89_T%C3%A3o_Bom_Clipe_Oficial_MK_MusicM4A_128K.mp3" type="audio/mpeg">
   </audio>
 
+  <!-- JAVASCRIPT -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const heart = document.getElementById("start-heart");
       const audio = document.getElementById("bg-music");
-      if (heart && audio) {
+
+      // Tocar música ao clicar no coração
+      if(heart && audio) {
         heart.addEventListener("click", () => audio.play());
       }
+
+      // Função para criar emojis flutuantes
+      const particlesContainer = document.getElementById("particles");
+      const emojis = ["💖","💗","🤍","🌸","🌷","✨","🏡"];
+
+      function createParticle(x, y) {
+        const span = document.createElement("span");
+        span.className = "particle";
+        span.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        span.style.left = x + "px";
+        span.style.top = y + "px";
+        span.style.fontSize = (20 + Math.random()*40) + "px";
+        span.style.animationDuration = (4 + Math.random()*4) + "s";
+        particlesContainer.appendChild(span);
+        setTimeout(()=>span.remove(), 8000);
+      }
+
+      // Criar partículas aleatórias no topo continuamente
+      setInterval(() => {
+        const x = Math.random() * window.innerWidth;
+        const y = window.innerHeight + 50;
+        createParticle(x, y);
+      }, 400);
+
+      // Criar partículas ao clicar ou tocar
+      document.addEventListener("click", (e) => createParticle(e.clientX, e.clientY));
+      document.addEventListener("touchstart", (e) => {
+        const touch = e.touches[0];
+        createParticle(touch.clientX, touch.clientY);
+      });
     });
   </script>
 </body>
