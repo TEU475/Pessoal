@@ -47,6 +47,43 @@ body {
   pointer-events: none;
   z-index: 1;
 }
+    
+    <div id="particles"></div>
+
+<script>
+window.onload = () => {
+  const particleContainer = document.getElementById("particles");
+  const emojis = ["❤️","🤍","🌸","🌷","✨","💖","💗","💌"];
+
+  function createParticle(x, y) {
+    const span = document.createElement("span");
+    span.classList.add("particle");
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.left = (x || Math.random() * window.innerWidth) + "px";
+    span.style.top = (y || window.innerHeight) + "px";
+    span.style.fontSize = (20 + Math.random() * 20) + "px";
+    span.style.opacity = 0.7 + Math.random() * 0.3;
+    const duration = 5 + Math.random() * 5;
+    span.style.animationDuration = duration + "s";
+    particleContainer.appendChild(span);
+    setTimeout(() => span.remove(), duration * 1000);
+  }
+
+  setInterval(() => createParticle(), 500);
+
+  document.body.addEventListener("click", (e) => createParticle(e.clientX, e.clientY));
+  document.body.addEventListener("touchstart", (e) => {
+    const touch = e.touches[0];
+    createParticle(touch.clientX, touch.clientY);
+  });
+};
+</script>
+
+
+body > *:not(#particles) {
+  position: relative;
+  z-index: 2;
+}
 
 
 /* ==========================
