@@ -5,8 +5,17 @@
 body {
   margin: 0;
   font-family: 'Quicksand', sans-serif;
-  overflow-y: auto; /* rolagem livre restaurada */
+  overflow-y: auto;
+  line-height: 1.6;
+
+  background: linear-gradient(
+    to bottom,
+    rgb(179,48,96) 0%,     /* rosa escuro topo */
+    rgb(255,182,193) 50%,  /* rosa claro meio */
+    rgb(179,48,96) 100%    /* rosa escuro fundo */
+  );
 }
+
 
 /* Emojis flutuantes */
 #particles {
