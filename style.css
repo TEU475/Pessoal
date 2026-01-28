@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  overflow-y: auto; /* rolagem livre restaurada */
+}
+
+/* Emojis flutuantes */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+body > *:not(#particles) {
+  position: relative;
+  z-index: 2;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cada bloco agora tem altura natural */
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 24px 24px;
+  padding: 28px 22px;
+  border-radius: 22px;
+  text-align: center;
+
+  background: rgba(255, 192, 203, 0.90);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.5s ease;
+}
+
+.intro { padding: 36px 26px; }
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.7em;
+  margin-bottom: 14px;
+  color: #b03060;
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  margin-bottom: 14px;
+  color: #b03060;
+}
+
+p {
+  font-size: 1.5em;
+  line-height: 1.85;
+  color: #5a2a3c;
+}
+
+/* Coração */
+.final-heart {
+  font-size: 3.6em;
+  margin: 26px 0 10px;
+  cursor: pointer;
+  animation: pulse 2.4s infinite;
+  transition: transform 0.25s ease;
+}
+
+.final-heart.clicked {
+  animation: none;
+  transform: scale(1.4);
+}
+
+.secret-message {
+  display: none;
+  margin-top: 16px;
+  font-size: 1.35em;
+  color: #8a1f4d;
+  font-style: italic;
+}
+
+.secret-message.show {
+  display: block;
+  animation: fadeIn 0.7s ease forwards;
+}
+
+.final-quote, .final-signature, .final-date {
+  font-style: italic;
+  font-size: 1.35em;
+  margin-top: 16px;
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Emojis flutuantes */
+.particle {
+  position: absolute;
+  font-size: 22px;
+  opacity: 0.8;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(100vh) scale(0.9); opacity: 0; }
+  20% { opacity: 0.8; }
+  to { transform: translateY(-10vh) scale(1.15); opacity: 0; }
+}
+
+/* ============================
+   IMAGEM FINAL DA PÁGINA
+============================ */
+.footer-img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+  padding-bottom: 32px;
+}
+
+.footer-img img {
+  width: 90%;
+  max-width: 420px;   /* tamanho bom desktop */
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
